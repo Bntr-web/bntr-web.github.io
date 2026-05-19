@@ -25,12 +25,19 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+            height: 100%;
+        }
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
+            height: 100%;
         }
 
         /* --- NAVIGATION --- */
@@ -40,8 +47,10 @@
             align-items: center;
             padding: 24px 8%;
             border-bottom: 1px solid var(--border);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             background: rgba(13, 17, 23, 0.85);
             backdrop-filter: blur(12px);
             z-index: 100;
@@ -94,15 +103,21 @@
             background: var(--primary-hover);
         }
 
-        /* --- HERO SECTION --- */
-        .hero {
+        /* --- GLOBAL FULL HEIGHT SECTION STYLE --- */
+        .fullscreen-section {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 100px 8% 80px 8%;
+            padding: 100px 8% 60px 8%;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
             max-width: 900px;
             margin: 0 auto;
+            text-align: center;
         }
 
         .badge {
@@ -114,6 +129,7 @@
             font-weight: 600;
             border: 1px solid rgba(99, 102, 241, 0.2);
             margin-bottom: 24px;
+            display: inline-block;
         }
 
         h1 {
@@ -135,26 +151,51 @@
             font-size: 19px;
             color: var(--text-muted);
             max-width: 640px;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
         }
 
         .cta-group {
             display: flex;
             gap: 16px;
+            align-items: center;
+            justify-content: center;
         }
 
-        .btn-main {
+        .price-callout {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .price-callout strong {
+            color: #27C93F;
+        }
+
+        /* Lemon Squeezy Custom Styled Button */
+        .lemonsqueezy-button {
             background: var(--primary);
-            color: white;
+            color: white !important;
             padding: 16px 32px;
             border-radius: 10px;
             font-weight: 700;
             font-size: 16px;
             text-decoration: none;
+            display: inline-block;
             transition: transform 0.2s, background 0.2s;
+            border: none;
+            cursor: pointer;
         }
 
-        .btn-main:hover {
+        .lemonsqueezy-button:hover {
             background: var(--primary-hover);
             transform: translateY(-2px);
         }
@@ -175,16 +216,76 @@
             background: var(--surface);
         }
 
+        /* --- QUICK START / README SECTION --- */
+        .quick-start {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .qs-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Changed grid to 4 columns to comfortably fit the new scaling section */
+        .qs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .qs-block h3 {
+            color: var(--text-light);
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .qs-block ul {
+            list-style: none;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .qs-block ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .qs-block ul li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .qs-block code {
+            background: var(--bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--accent);
+            font-family: monospace;
+            font-size: 13px;
+        }
+
         /* --- FEATURES SECTION --- */
         .features {
-            padding: 80px 8%;
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
+            width: 100%;
         }
 
         .section-header h2 {
@@ -203,10 +304,11 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
+            width: 100%;
         }
 
         .card {
-            background: var(--surface);
+            background: var(--bg);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 32px;
@@ -241,11 +343,11 @@
             background: #161B22;
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
-            padding: 80px 8%;
         }
 
         .spec-container {
             max-width: 1200px;
+            width: 100%;
             margin: 0 auto;
             display: flex;
             flex-wrap: wrap;
@@ -324,16 +426,17 @@
         /* --- FOOTER --- */
         footer {
             text-align: center;
-            padding: 60px 8% 40px 8%;
+            padding: 40px 8%;
             color: var(--text-muted);
             font-size: 14px;
             border-top: 1px solid var(--border);
+            background: var(--bg);
         }
 
         @media (max-width: 768px) {
             h1 { font-size: 40px; }
             nav ul { display: none; }
-            .hero { padding: 60px 4% 60px 4%; }
+            .fullscreen-section { padding: 120px 4% 40px 4%; height: auto; min-height: unquote('unset'); }
         }
     </style>
 </head>
@@ -342,63 +445,116 @@
     <nav>
         <a href="#" class="logo">💬 Banter<span>.</span></a>
         <ul>
+            <li><a href="#guide">User Guide</a></li>
             <li><a href="#features">Features</a></li>
             <li><a href="#specs">Specs</a></li>
-            <li><a href="#docs">User Guide</a></li>
         </ul>
-        <a href="#download" class="nav-btn">Get License</a>
+        <a href="https://bntr.lemonsqueezy.com/checkout/buy/abc4d77f-79b7-4b37-b583-e276e98f1e2b?embed=1&media=0" class="nav-btn lemonsqueezy-button">Get License</a>
     </nav>
 
-    <header class="hero">
-        <div class="badge">🚀 Secure Self-Hosted Release v1.5</div>
-        <h1>Own Your Data. <br><span>Own Your Conversation.</span></h1>
-        <p>Banter is an ultra-lightweight, private communications server wrapped inside a native desktop dashboard. Zero tracking, zero middle-men, total privacy.</p>
-        <div class="cta-group">
-            <a href="#download" class="btn-main">Purchase License</a>
-            <a href="#features" class="btn-secondary">Explore Features</a>
+    <header class="fullscreen-section">
+        <div class="hero">
+            <div class="badge">🚀 Secure Self-Hosted Release v1.5</div>
+            <h1>Own Your Data. <br><span>Own Your Conversation.</span></h1>
+            <p>Banter is an ultra-lightweight, private communications server wrapped inside a native desktop dashboard. Zero tracking, zero middle-men, total privacy.</p>
+            
+            <div class="cta-container">
+                <div class="cta-group">
+                    <a href="https://bntr.lemonsqueezy.com/checkout/buy/abc4d77f-79b7-4b37-b583-e276e98f1e2b?embed=1&media=0" class="lemonsqueezy-button">Buy Banter Chat</a>
+                    <a href="#guide" class="btn-secondary">View User Guide</a>
+                </div>
+                <div class="price-callout">
+                    One-time payment of <strong>$29</strong>. Lifetime access, zero subscriptions.
+                </div>
+            </div>
         </div>
     </header>
 
-    <section class="features" id="features">
-        <div class="section-header">
-            <h2>Engineered For True Autonomy</h2>
-            <p>Everything you need for ironclad internal communications, completely independent of the cloud.</p>
-        </div>
-        <div class="grid">
-            <div class="card">
-                <span class="icon">🛡️</span>
-                <h3>100% Self-Hosted</h3>
-                <p>Runs entirely on your local machine or internal network hardware. Your relational SQLite database stays directly inside your secure local file directory.</p>
+    <section class="fullscreen-section quick-start" id="guide">
+        <div class="qs-container">
+            <div class="section-header">
+                <h2>Zero Friction User Guide</h2>
+                <p>No app stores. No configuration hell. Just immediate collaboration.</p>
             </div>
-            <div class="card">
-                <span class="icon">⚙️</span>
-                <h3>Desktop Control Panel</h3>
-                <p>Toggle network operations, view connectivity pulses, and hot-swap active service runtime ports with zero terminal commands via our custom desktop control window.</p>
-            </div>
-            <div class="card">
-                <span class="icon">📱</span>
-                <h3>Universal Web App (PWA)</h3>
-                <p>End-users connect instantly from any modern smartphone or tablet browser. Tap "Install App" to securely pin Banter directly onto any home screen framework.</p>
-            </div>
-            <div class="card">
-                <span class="icon">🖼️</span>
-                <h3>Media Drop & Zoom</h3>
-                <p>Instantly drag-and-drop screenshots or reference imagery straight into multi-channel timelines. Click any asset to focus it inside our fluid lightbox viewer.</p>
-            </div>
-            <div class="card">
-                <span class="icon">😄</span>
-                <h3>Custom Emoji Workspace</h3>
-                <p>Manage your ecosystem's visual slang. Click the desktop panel link to open your local directory and dump your custom reaction .png or .gif animations right into the app tray.</p>
-            </div>
-            <div class="card">
-                <span class="icon">🎲</span>
-                <h3>Terminal Command Actions</h3>
-                <p>Text fields double as administrative consoles. Issue real-time regex word-censoring commands, channel history purges, or launch system dice-rolls instantly.</p>
+            <div class="qs-grid">
+                <div class="qs-block">
+                    <h3>📱 PWA Instant Install</h3>
+                    <ul>
+                        <li><strong>Mobile:</strong> Open server URL in Safari or Chrome, tap <strong>"Add to Home Screen"</strong>.</li>
+                        <li><strong>Desktop:</strong> Click the green <strong>Install App</strong> button directly in Chrome or Edge.</li>
+                        <li>Launches natively in a standalone window, completely bypassing browser address bars.</li>
+                    </ul>
+                </div>
+                <div class="qs-block">
+                    <h3>🎨 Total Workspace Control</h3>
+                    <ul>
+                        <li>Hit the <strong>Settings Gear (⚙️)</strong> to instantly toggle Light/Dark midnight styles.</li>
+                        <li>Change layout button accent colorways using an integrated live color-picker.</li>
+                        <li>Toggle <strong>Compact Mode</strong> to crush timeline layouts down for high-density reading.</li>
+                    </ul>
+                </div>
+                <div class="qs-block">
+                    <h3>🎲 Secret Console Commands</h3>
+                    <ul>
+                        <li>Type <code>/roll</code> to execute a secure 20-sided polyhedral dice roll instantly to the server room.</li>
+                        <li>Type <code>/flip</code> to cast an un-rigged digital heads/tails coin toss into the timeline.</li>
+                        <li>Admins can set real-time text regex scripts to redact banned strings into black blocks (<code>████</code>).</li>
+                    </ul>
+                </div>
+                <div class="qs-block">
+                    <h3>☁️ Enterprise Scaling</h3>
+                    <ul>
+                        <li><strong>Global Access:</strong> Point a free <strong>Cloudflare Tunnel</strong> directly at your local port (e.g., <code>localhost:3000</code>).</li>
+                        <li><strong>No Port Forwarding:</strong> Access your secure dashboard globally on a custom domain without opening up dangerous router firewall ports.</li>
+                        <li><strong>Infinite Scaling:</strong> Keep data locked inside your room database while leveraging global DDoS shield protection entirely for free.</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="spec-section" id="specs">
+    <section class="fullscreen-section" id="features">
+        <div class="features">
+            <div class="section-header">
+                <h2>Engineered For True Autonomy</h2>
+                <p>Everything you need for ironclad internal communications, completely independent of the cloud.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <span class="icon">🛡️</span>
+                    <h3>100% Self-Hosted</h3>
+                    <p>Runs entirely on your local machine or internal network hardware. Your relational SQLite database stays directly inside your secure local file directory.</p>
+                </div>
+                <div class="card">
+                    <span class="icon">⚙️</span>
+                    <h3>Desktop Control Panel</h3>
+                    <p>Toggle network operations, view connectivity pulses, and hot-swap active service runtime ports with zero terminal commands via our custom desktop control window.</p>
+                </div>
+                <div class="card">
+                    <span class="icon">📱</span>
+                    <h3>Universal Web App (PWA)</h3>
+                    <p>End-users connect instantly from any modern smartphone or tablet browser. Tap "Install App" to securely pin Banter directly onto any home screen framework.</p>
+                </div>
+                <div class="card">
+                    <span class="icon">🖼️</span>
+                    <h3>Media Drop & Zoom</h3>
+                    <p>Instantly drag-and-drop screenshots or reference imagery straight into multi-channel timelines. Click any asset to focus it inside our fluid lightbox viewer.</p>
+                </div>
+                <div class="card">
+                    <span class="icon">😄</span>
+                    <h3>Custom Emoji Workspace</h3>
+                    <p>Manage your ecosystem's visual slang. Click the desktop panel link to open your local directory and dump your custom reaction .png or .gif animations right into the app tray.</p>
+                </div>
+                <div class="card">
+                    <span class="icon">🎲</span>
+                    <h3>Terminal Command Actions</h3>
+                    <p>Text fields double as administrative consoles. Issue real-time regex word-censoring commands, channel history purges, or launch system dice-rolls instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fullscreen-section spec-section" id="specs">
         <div class="spec-container">
             <div class="spec-text">
                 <h2>The Frozen Stack Architecture</h2>
@@ -433,5 +589,6 @@ PS C:\Program Files\Banter> .\Banter.exe
         <p>&copy; 2026 Banter App. Built for non-commercial and private network deployment. All Rights Reserved.</p>
     </footer>
 
+    <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
 </body>
 </html>
