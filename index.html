@@ -229,17 +229,17 @@
             margin: 0 auto;
         }
 
-        /* Changed grid to 4 columns to comfortably fit the new scaling section */
+        /* Adjusted grids to gracefully handle a fifth column block */
         .qs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 24px;
             margin-top: 40px;
         }
 
         .qs-block h3 {
             color: var(--text-light);
-            font-size: 18px;
+            font-size: 17px;
             margin-bottom: 12px;
             display: flex;
             align-items: center;
@@ -505,8 +505,16 @@
                     <h3>☁️ Enterprise Scaling</h3>
                     <ul>
                         <li><strong>Global Access:</strong> Point a free <strong>Cloudflare Tunnel</strong> directly at your local port (e.g., <code>localhost:3000</code>).</li>
-                        <li><strong>No Port Forwarding:</strong> Access your secure dashboard globally on a custom domain without opening up dangerous router firewall ports.</li>
+                        <li><strong>No Port Forwarding:</strong> Access your secure dashboard globally on a custom domain without opening dangerous router firewall ports.</li>
                         <li><strong>Infinite Scaling:</strong> Keep data locked inside your room database while leveraging global DDoS shield protection entirely for free.</li>
+                    </ul>
+                </div>
+                <div class="qs-block">
+                    <h3>💾 Total Log Portability</h3>
+                    <ul>
+                        <li><strong>Absolute Sovereignty:</strong> Every chat message, image path, and channel history file is recorded directly into a local database file on your system.</li>
+                        <li><strong>No Stealth Uploads:</strong> Absolute transparency—zero third-party data tracking or cloud-side telemetry storage.</li>
+                        <li><strong>Seamless Backups:</strong> Want to pull your history? Simply copy the localized application data backup directory straight to a secondary hard drive.</li>
                     </ul>
                 </div>
             </div>
